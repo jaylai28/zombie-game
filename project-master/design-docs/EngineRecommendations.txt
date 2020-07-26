@@ -1,0 +1,30 @@
+Recommendations for changes to the game engine
+
+Overview 
+This documentation describes the recommended changes over the engine design. It includes the perceived problem, the design changes and the advantages and disadvantages of the proposed solution. The recommended changes cover the design principles that the classes must adhere to while fulfilling its functionality.
+
+
+Action 
+The hotkeys for the movement of the player have been initially set to the numbers and should have been set to WASD mode. This consumed a lot of time too and is not end user friendly, it is inconvenient to use the numbers to move the players around. The advantage of WASD design would be that a lot of people are used to gaming and since this itself is a game, people would feel much comfortable with it. Down side of this could be that when a player is moving west all the time, he would press the “A” key repeatedly without noticing the change of hotkey. Hence, he might then choose an unwanted action.
+
+Actor  
+getWeapon() method in Actor class should have greater flexibility over having the options of selecting weapons instead of only returning the first Weapon in the inventory The getWeapon() method in the Actor class iterates every item in the inventory and returns the first Weapon that it finds. We say that this design is not future proof. An added feature of selecting and deselecting weapon of the actor’s choice would have to modify the engine code of Actor, which is bad because a class should only have one reason to change due to single-responsibility principle. Adding such condition and implementation in the engine allow classes that inherits from the Actor to hold the similar functionality without the need of overriding it many times to implement the similar feature. This prevents code redundancy, because Actor’s subclasses can execute same functionality with this design. 
+
+
+
+
+
+Weapon 
+For this class, we thought that the class should have a variable called ammo. This is because weapons like guns contain ammo. The problem arises if the weapon is more of a primitive type like a knife. If the created weapon item has ammo, then the ammo can be overridden using a setter. Since the initial specs of assignment 1 and 2 were only having primitive weapons but assignment 3 has guns, having ammo would have made the game more convenient to implement as ammo could have been set to null for primitive weapons. 
+
+
+ActorLocations 
+There’s no method in ActorLocations that can return all the actors who are currently alive in the map. There could have been a method to return an unmodifiable list of actors who are currently alive on all the maps. This would make it easier to check if an actor is still alive in the map. Besides, this could have also been useful to remove all the players from the map. There would be no disadvantages in implementing this as we are returning an unmodifiable list. There will be no privacy leaks. 
+
+Printable, Ground, GrounFactory
+This class is an interface, hence specifying “public” in the method is kind of redundant. 
+
+World 
+For this class, one of the problems it has is the game will not end straight away when the player is removed. It will only end after all the actor’s turn is processed in the map. The game should instead check if the player is alive after every time the player finishes its turn. This wouldn’t cause any crashes in the game. It will straight end the game when the player is not in the map before the other actor processed their playturn. Next, a better way to implement the stillRunning method would be to check if the player is alive by using the isConscious method in the player class instead of using the contains method in actorLocations.
+
+

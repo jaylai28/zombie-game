@@ -1,0 +1,98 @@
+Work Breakdown Agreement (WBA)
+Drafted: 2nd May 2020 by Wei Jian Lai
+2nd Draft: 7th May 2020 by Amil
+2nd Draft: 21th May 2020 by Amil
+Team member: Amil Avasthi, Wei Jian Lai
+
+Assignment 1
+Tasks:
+	1. Class diagram
+	2. Interaction diagram
+	3. Design rationale
+	4. Work Breakdown Agreement (WBA)
+
+Workload Assignment:
+	The class diagrams will be done by both Amil and Wei Jian. We will discuss and finish the class diagrams first.
+	It will be first written as a draft on paper by both of us and Wei Jian will convert it into LucidChart Diagram and will upload it to Gitlab.
+	After that we will meet again to discuss and do Interaction Diagrams and Design Rationale. 
+	We will be doing both tasks together and Amil will convert the Interaction Diagram draft to LucidChart Diagram. 
+	Amil and Wei Jian will be writing the final Design Rationale document and will upload it to Gitlab.
+	We will have a Zoom meeting before submitting the assignment to double confirm all the aspects of the assignment and make any necessary changes and upload them to Git if there are any changes.
+========== Sign under this line: ==========
+I accept this Work Breakdown Agreement - Amil Avasthi
+I accept this Work Breakdown Agreement - Wei Jian Lai
+
+
+
+Assignment 2	UPDATED WBA
+
+Tasks:	Revise WBA
+	Revise UML
+	Revise Design rational
+	Java Docs
+	Implement the design from Assignment 1
+	
+	1.Create a Corpse class to implement rising from the dead.
+	2.Create a ConvoAction class so that zombies can say their words.
+	3.Create a CheckWeaponBehaviour class so that actor can pickup a portable item from the map.
+	4.Create a class Zombie parts which stores body parts for the zombie, for example arms and legs.
+	5.Create classes Zombiemace and zombieclub so that weapons can be crafted.
+	6.Create a class Crop which would be a part of the ground.
+	7.Create a Farmer class which would interact with the crops.
+	8.Create new classes to implement the farming behaviour to sow and fertilise the crops. 
+	9.Create new classes to implement the harvesting of the crops. 
+	10.Create a class food to heal the humans.
+	11.Modify Zombie to implement functionalities.
+	12.Modify AttackBehaviour to add new attack.
+	13.Modify AttackAction to add new attack actions.
+	14.Modify Player to implement the functionalities.
+	15.Modify ZombieActor to implement the functionalities.
+	16.Modify Humans to have more behaviours.
+
+	Overall integration:
+				Integrate all features implemented in this assignment into main(Application) class with appropriate showcase for each and every one of them.
+
+Workload Assignment:
+	1.Corpse class: Wei Jian Lai
+	2.ConvoAction class: Wei Jian Lai
+	3.CheckWeaponBehaviour class: Wei Jian Lai
+	4.ZombieParts class: Wei Jian Lai
+	5.Zombiemace and Zombieclub classes: Wei Jian Lai
+	6.Crop class: Amil
+	7.Farmer class: Amil
+	8.FarmingBehaviour and FarmingAction classes: Amil
+	9.HarvestBehaviour and HarvestAction classes: Amil
+	10.Food class: Amil
+	11.Modify Zombie: Wei Jian Lai
+	12.Modify AttackBehaviour:  Wei Jian Lai
+	13.Modify AttackAction: Wei Jian Lai
+	14.Modify Player: Amil
+	15.Modify ZombieActor: Wei Jian Lai
+	16.Modify Humans: Amil
+	17.Revise WBA: Amil
+	18.Revise UML: Amil
+	19.Revise Design rational: Wei Jian Lai
+	20.Java Docs: Both
+
+
+
+ ========== Sign under this line: ==========
+I accept this Work Breakdown Agreement - Amil Avasthi
+I accept this Work Breakdown Agreement - Wei Jian Lai
+
+
+
+
+Assignment 3
+Tasks Assigned:
+
+Wei Jian - Fix some of the errors and bad design in assignment 2, Going to town, Mambo Marie and Bonus Tasks. UML diagram,design rationale & sequential diagram for the implemented class such as Mambo Marie, bonus tasks, going to town.
+
+Amil - New weapons: shotgun and sniper rifle, Ending the game and recommendations for change to the game engine. UML diagram,design rationale & sequential diagram for the implemented class such as new weapon class, ending the game.
+
+
+
+
+ ========== Sign under this line: ==========
+I accept this Work Breakdown Agreement - Wei Jian Lai
+I accept this Work Breakdown Agreement - Amil Avasthi

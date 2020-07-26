@@ -1,0 +1,46 @@
+Design rationale
+In this design, we will extend the functionality of the application by adding new classes, extend existing classes and make the new classes interact with new/existing classes.
+
+Zombie class
+ For the Zombie class, we created the limbs as a list of strings which consists of zombie legs or zombie arms. It only creates instances and drops them as items when the limbs are amputated. It will call the portable item class when limbs are dropped on the ground.
+
+- Extend Action class:
+BiteAttackAction: Create a new Bite Attack Action class in which the bite attack is implemented. This class will have a special action such as bite attack which deals higher damage and implements a method of the probability of hitting the player to be lower than the normal punch attack in attackAction class. It will determine the which attack is chosen by probability and calls that method created in the method.The implementation of this class will fulfill the Don’t Repeat Yourself (DRY) design principle because if we can get the bite attack action from the class, we do not have to rewrite the code when the attack is a bite attack but instead we can just call the class and it will perform bite attack.
+ 
+CraftAction: A human will craft a limb from its inventory into a weapon, an arm can be crafted into a zombie club while a leg can be a zombie mace. The class will determine the damage of the newly crafted weapons which can be crafted into zombie club and zombie mace. The class will also check if a player has a craftable item in inventory and upgrade the item if the player decides to upgrade it. This class fulfils the Don’t Repeat Yourself (DRY) design principle because we don’t have to rewrite the code when we want to craft a new weapon. We can just call  the class or use the methods from the class to craft the weapons.
+ 
+FarmingAction:  A farmer will decrease the time left to ripen by 10 turns. This class will implement methods to decrease the crops time to ripe inside the crop class. Therefore, this will give the FertiliseAction class a dependency to the crop class. This class fulfills the Fail Fast design principle because the system will fail immediately and visibly when the farmer class or fertilise action has an error. It will be easier to find the errors out too as we get to know which part of the crops part have errors instead of having all the functions/methods all in one crop class. This will make it harder to catch or identify the error and it might even cause the system to crash.
+
+The farmer will sow a crop on the dirt that it’s standing on and the class will implement a method to plant a crop such as creating a crop object inside the method by calling the class crop. This class fulfills the Fail Fast design principle because the system will fail immediately and visibly when the farmer class or fertilise action has an error. It will be easier to find the errors out too as we get to know which part of the crops part have errors instead of having all the functions/methods all in one crop class. This will make it harder to catch or identify the error and it might even cause the system to crash.
+
+
+HarvestAction: A farmer or a player harvests the crop when standing next to a ripe crop. This class will create methods that harvest the food for the player and place it into the player’s inventory. This class will have another method to harvest the crop and drop it on the location. This class fulfils the Don’t Repeat Yourself design principles as it can reuse the code for both players and farmers to harvest the crop instead of just creating the method on both the classes.
+ 
+
+
+- Extend Ground class:
+Crop: Farmers will grow crops on dirt and the crops can ripe when the farmer is standing next to them, they also can be harvested for food by the farmer or player. The food will be stored as a portable item inside the crop class. As both the farmer and player require to harvest, sow and fertilise the crops so having a crop class will allow them to create a new crop object and harvest, fertilise the crop object as it can reuse the code from the crop class and do not have to rewrite the code such as creating a new method in its class hence the design principle is Don’t Repeat Yourself. 
+	
+ 
+- Extend Behaviour class:
+FarmingBehaviour: A class that generates a FertiliseAction if the Farmer is standing on an unripe crop. This class will have the fertilise method to reduce the time required for the crops to ripe if a farmer is standing near an unripe crop. Design principle is don’t repeat yourself and it will call the FertiliseAction if this event is encountered again. 
+ Farming Behaviour class checks if the farmer is standing next to a patch of dirt and if it is then it will call the sow action. Design principle is don’t repeat yourself and it will call the sowAction if this event is encountered again. 
+
+HarvestBehaviour: HarvestBehaviour class generates harvest action and checks if the farmer or the player is standing next to a ripe crop and if it then it calls the harvest action. Design principle is don’t repeat yourself and it will call the harvest action if this event is encountered again. Another reason why this is having Don’t Repeat Yourself design principle as is it allows both player and farmer to harvest which is better than implementing the harvest method on both classes and required to implement it twice causing repeating the code. 
+
+CraftBehaviour: A class that generates a CraftAction if the Player is holding a portable item which is zombie legs or arms. It will also generate CraftAction too when the player’s inventory has a weapon. It checks whether the leg or the arm can be crafted as a club or a mace. Design principle is don’t repeat yourself and it will call the CraftAction if this event is encountered again. The reason why it does not repeat itself is because whenever the player can craft a weapon, it can use methods from this class instead of rewriting code.
+ 
+ZombieAttackBehaviour: AttackBehaviour class will decide whether to do the intrinsic attack or the bite attack. It generates a BiteAttackAction which will do a bite attack on the human. Design principle is don’t repeat yourself and it will call the BiteAttackAction if this event is encountered again. This class also fulfils the Fail Fast design principle because the system will fail immediately and visibly when the Zombie Attack has an error. It will be easier to find out the errors as we have two different classes for zombie bite attack and zombie normal attack. 
+
+
+- Extend ZombieActor class:
+Corpse: After a human is killed a new corpse object is created which waits for 5-10 turns before turning into a zombie. It helps to reduce the dependency between human and corpse. Corpse extends from ZombieActor hence it is an actor which just waits for a few turns. After it’s waiting period is over it would create a new zombie object in it’s method. Although there will be a dependency from corpse class to zombie class, it reduces the dependency from human class to corpse class compared to implementing just human class to zombie class to determine the human turning into a zombie. This proves that it fulfills the reduced dependency design principles as it has reduce the dependency from human to corpse class.
+ 
+
+ - Extend Human class:
+Farmer: The farmer extends from humans as both player and farmer can harvest the food, it incorporates don't repeat yourself the design rationale. The farmer can use the methods implemented from its parent class which allows the class to not repeat itself as it can reuse the code from its parent class instead of rewriting the same method. The farmer also has the ability to sow and fertilise the crop. The farmer is extended from the Human class hence it reduces dependencies from the classes of engine package. 
+
+ 
+ 
+
+
